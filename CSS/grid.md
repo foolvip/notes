@@ -21,16 +21,19 @@
 - grid-auto-flow
 - grid（grid-template-rows，grid-template-columns，grid-template-areas，grid-auto-rows，grid-auto-columns和grid-auto-flow）
 ### 作用在grid子项上
-- grid-column-start: <number> | <name> | span <number> | span <name> | auto
-- grid-column-end: <number> | <name> | span <number> | span <name> | auto
-- grid-row-start: <number> | <name> | span <number> | span <name> | auto (span <name>: 表示当前网格会自动扩展，直到命中指定的网格线名称。)
-- grid-row-end: <number> | <name> | span <number> | span <name> | auto (span <number>: 表示当前网格会自动跨越指定的网格数量。)
-- grid-column: grid-column: <start-line> / <end-line> | <start-line> / span <value>;
-- grid-row: grid-row: <start-line> / <end-line> | <start-line> / span <value>;
-- grid-area: grid-area: <name> | <row-start> / <column-start> / <row-end> / <column-end>;
-- justify-self: justify-self: stretch | start | end | center;
-- align-self: align-self: stretch | start | end | center;
-- place-self
+```css
+grid-column-start: <number> | <name> | span <number> | span <name> | auto
+grid-column-end: <number> | <name> | span <number> | span <name> | auto
+grid-row-start: <number> | <name> | span <number> | span <name> | auto (span <name>: 表示当前网格会自动扩展，直到命中指定的网格线名称。)
+grid-row-end: <number> | <name> | span <number> | span <name> | auto (span <number>: 表示当前网格会自动跨越指定的网格数量。)
+grid-column: grid-column: <start-line> / <end-line> | <start-line> / span <value>;
+grid-row: grid-row: <start-line> / <end-line> | <start-line> / span <value>;
+grid-area: grid-area: <name> | <row-start> / <column-start> / <row-end> / <column-end>;
+justify-self: justify-self: stretch | start | end | center;
+align-self: align-self: stretch | start | end | center;
+place-self
+```
+
 ## 容器属性
 ### grid属性
 ### grid-template属性
