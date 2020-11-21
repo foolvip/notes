@@ -62,6 +62,49 @@ grid-template-areas: 'a . c'
 ```
 
 ## 项目属性
+<!-- 
 
+    grid: 行 / 列
 
+    grid: <'grid-template'> | <'grid-template-rows'> / [ auto-flow && dense? ] <'grid-auto-columns'>? | [ auto-flow && dense? ] <'grid-auto-rows'>? / <'grid-template-columns'>
+    Explicit Grid Properties：显式网格属性
+        grid-template: grid-template-rows、grid-template-columns、grid-template-areas
+        grid-template: none | [ <‘grid-template-rows’> / <‘grid-template-columns’> ] | [ <line-names>? <string> <track-size>? <line-names>? ]+ [ / <explicit-track-list> ]?
+            <line-names> = '[' <custom-ident>* ']'
+            <track-size> = <track-breadth> | minmax( <inflexible-breadth> , <track-breadth> ) | fit-content( <length-percentage> )
+            <track-breadth> = <length-percentage> | <flex> | min-content | max-content | auto
+            <inflexible-breadth> = <length-percentage> | min-content | max-content | auto
+            <explicit-track-list> = [ <line-names>? <track-size> ]+ <line-names>?
 
+    Implicit Grid Properties：隐式网格属性
+        grid-auto-rows: 指定网格的隐式创建的行的行名和轨道大小调整功能
+        grid-auto-columns
+        grid-auto-flow: [ row | column | dense | row dense | column dense ]
+            row: Specifies that new rows are added to fit any auto-placed items.
+            column: Specifies that new columns are added to fit any auto-placed items.
+            dense: Specifies that a "dense" packing algorithm is used, which attempts to fill in holes earlier in the grid if smaller items come up later.If dense isn't specified, then a "sparse" placement algorithm is used instead, where grid items are placed in source order (never backtracking to fill any holes).
+    
+    Gutter Properties
+        grid-column-gap
+        grid-row-gap
+
+    grid-row: 定义第一个块的 开始行线/结束行线
+    grid-row: 	<grid-line> [ / <grid-line> ]?
+        <grid-line> = auto | <custom-ident> | [ <integer> && <custom-ident>? ] | [ span && [ <integer> || <custom-ident> ] ]
+    grid-row-start: <grid-line> 定义块的开始行线
+    grid-row-end: <grid-line> 定义块的结束行线
+    grid-row-gap
+        grid-row-gap: <length-percentage>
+
+    grid-column: <grid-line> [ / <grid-line> ]?  
+        <grid-line> = auto | <custom-ident> | [ <integer> && <custom-ident>? ] | [ span && [ <integer> || <custom-ident> ] ]
+    grid-column-start
+    grid-column-end
+    grid-column-gap
+
+    grid-gap
+
+    grid-area: <grid-line> [ / <grid-line> ]{0,3} => （ grid-row-start / grid-column-start / grid-row-end / grid-column-end ）
+        <grid-line> = auto | <custom-ident> | [ <integer> && <custom-ident>? ] | [ span && [ <integer> || <custom-ident> ] ]
+
+ -->
