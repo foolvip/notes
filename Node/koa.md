@@ -34,3 +34,19 @@
 - 尽量使用类 + 类方法的形式编写控制器
 - 严谨的错误处理
 
+
+
+## 代码
+```js
+// 中间件 next指下一个中间件
+app.use(async(ctx, next) => {
+  await next();console.log(2)
+})
+// next是异步函数
+
+ctx.params //获取请求头路径参数
+ctx.request.body //获取请求体
+ctx.set('Allow', 'GET, POST'); // 设置允许的方法
+
+ctx.throw(412, 'id不能为空')
+```
