@@ -83,3 +83,17 @@
             column-rule-style: none, hidden, dotted, dashed, solid, double, groove, ridge, inset, and outset
 
 -->
+
+
+### html5基础知识、核心技术与前沿案例
+常见的非内容标签包括<meta>、<img>、<br>、<hr>、<input>、<link>、<embed>等
+#### html标签属性
+lang
+```html
+<html lang="en">
+<html lang="fr">
+<html lang="zh-CN">
+<html manifest="cache.manifest">
+```
+**注意：**上述en、fr等均为语言代码。目前，lang属性语言代码的国际标准是IETF的BCP 47（参见http://tools.ietf.org/html/bcp47）。在该标准中，简体中文更标准的写法应为zh-cmn-Hans。     
+Manifest主要适用于不依赖网络，且下载后不需要再次更新的HTML5游戏、应用或页面，在需要频繁或偶尔更新内容的页面中应慎用manifest。总体来说，其应用面目前还较窄。manifest文件格式以及试用方式参考本书。    
