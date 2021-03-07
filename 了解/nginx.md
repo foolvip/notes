@@ -137,6 +137,44 @@ http {
            allow 172.18.5.54; #允许的ip           
         } 
     }
+
+    # ------------------ nginx缓存服务器上的静态文件 开始 ----------
+    server {
+        listen       80 default_server;
+        server_name  localhost;
+        root /mnt/blog/;
+
+        location / {
+
+        }
+
+        #要缓存文件的后缀，可以在以下设置。
+        location ~ .*\.(gif|jpg|png|css|js)(.*) {
+                proxy_pass http://ip地址:90;
+                proxy_redirect off;
+                proxy_set_header Host $host;
+                proxy_cache cache_one;
+                proxy_cache_valid 200 302 24h;
+                proxy_cache_valid 301 30d;
+                proxy_cache_valid any 5m;
+                expires 90d;
+                add_header wall  "hey!guys!give me a star.";
+        }
+    }
+
+    # 无nginx缓存的blog端口
+    server {
+        listen  90;
+        server_name localhost;
+        root /mnt/blog/;
+
+        location / {
+
+        }
+    }
+
+    # ------------------ nginx缓存服务器上的静态文件 结束 ----------
+
 }
 
 ```
@@ -193,3 +231,12 @@ firewall-cmd --reload // 重新载入
 firewall-cmd --zone=public --query-port=80/tcp  // 查看
 firewall-cmd --zone=public --remove-port=80/tcp --permanent // 删除
 ```
+### 问题
+- 公司的静态资源服务器全部使用的Nginx，且都开启了gzip压缩。内部测试是完全正常的，然而一到外网，居然没有做gzip
+
+原因：做负载均衡的机器上面没开gzip：在应用服务器前，公司还有一层Nginx的集群作为七层负责均衡，在这一层上，是没有开启gzip的。   
+还需要设置gzip_http_version为1.0：nginx和后端的upstream server之间默认是用HTTP/1.0协议通信的   
+在应用服务器前，公司还有一层Nginx的集群作为七层负责均衡，在这一层上，是没有开启gzip的。
+如果我们使用了proxy_pass进行反向代理，那么nginx和后端的upstream server之间默认是用HTTP/1.0协议通信的。
+如果我们的Cache Server也是nginx，而前端的nginx没有开启gzip。
+同时，我们后端的nginx上没有设置gzip_http_version为1.0，那么Cache的url将不会进行gzip压缩
